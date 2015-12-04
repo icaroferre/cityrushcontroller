@@ -16,6 +16,7 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 //Global Settings
 int knobs_jitter_amount = 7;
 int controller_midi_channel = 10;
+int led_midi_channel = 14;
 
 //MIDI Assignments
 int knob1_cc = 1;
@@ -98,7 +99,7 @@ int led3_pwm = 0;
 
 //LED Control
 void HandleControlChange (byte channel, byte number, byte value) {
-  if (channel == 14) {
+  if (channel == led_midi_channel) {
     if (number == 1) {
       led1_pwm = value * 2;
       analogWrite(led1, led1_pwm);
@@ -131,8 +132,6 @@ void setup() {
 
   //Assign Handles
   MIDI.setHandleControlChange (HandleControlChange);
-
-
 
 }
 
