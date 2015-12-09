@@ -96,6 +96,11 @@ int led2_pwm = 0;
 const int led3 = 5; //Pin Number
 int led3_pwm = 0;
 
+//LED 4
+const int led4 = 10; //Pin Number
+int led4_pwm = 0;
+
+
 
 //LED Control
 void HandleControlChange (byte channel, byte number, byte value) {
@@ -112,6 +117,11 @@ void HandleControlChange (byte channel, byte number, byte value) {
     if (number == 3) {
       led3_pwm = value * 2;
       analogWrite(led3, led3_pwm);
+
+    }
+    if (number == 4) {
+      led4_pwm = value * 2;
+      analogWrite(led4, led4_pwm);
 
     }
   }
